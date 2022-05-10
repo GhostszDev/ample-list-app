@@ -1,38 +1,53 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
 .App {
+}
+
+.Nav {
+  height: 4rem;
+  box-shadow: grey 0 0 6px 2px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Nav .Nav-Text {
+  padding-top: .7em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Content {
+  padding-top: 2rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.Content .Content-Search{
+  list-style: none;
+  display: inline-flex;
+  width: 100%;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.Content .Content-Search li {
+  padding-right: 1em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Content .Content-Search li:last-child {
+  padding-right: 0;
+}
+
+.Content .Content-Table {
+  margin-top: 2em;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.Content .Content-Table td, .Content .Content-Table th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.Content .Content-Table tr:nth-child(even) {
+  background-color: #dddddd;
 }
