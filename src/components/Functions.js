@@ -1,25 +1,25 @@
-import {WebServicePost, WebServices} from './Resources'
+import {WebServicePost} from './Resources'
 
 let tableData = {};
 
 
-function loadTableData(){
+export function loadTableData(){
     if(tableData.length > 0){
         tableData.length = 0;
     }
 
-    WebServicePost(WebServices+'', [], []);
+    tableData = WebServicePost('https://api.adviceslip.com/advice');
 
 }
 
-function editTableData(id){
+export function editTableData(id){
 
 }
 
-function deleteTableData(id){
+export function deleteTableData(id){
 
 }
 
-function editBtn(id){
-
+export function editBtn(id){
+    console.log(id)
 }

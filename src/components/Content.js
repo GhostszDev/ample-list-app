@@ -1,7 +1,29 @@
-import React from 'react';
-import Options from "./Options";
+import React, {useState, useEffect} from 'react';
+import {editBtn} from "./Functions"
 
 const Content = () => {
+    let isEditing = false;
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const url = "https://api.adviceslip.com/advice";
+
+        const fetchData = async () => {
+            const res = await fetch(
+                'http://localhost:3005/AMPLE-API/stock-list',
+            );
+            const json = await res.json();
+            setData(json.table_data);
+        };
+
+        fetchData();
+    }, []);
+
+    function btn(id){
+        isEditing = !isEditing;
+        editBtn(id)
+    }
+
     return (
         <div className='Content'>
 
@@ -37,22 +59,22 @@ const Content = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>84152</td>
-                        <td>13</td>
-                        <td>Ample Labels</td>
-                        <td>35000</td>
-                        <td>P7</td>
-                        <td><Options></Options></td>
+                {data.map(item => (
+                    <tr key={item.id}>
+                        <td>{item.job_number}</td>
+                        <td>{item.width}</td>
+                        <td>{item.description}</td>
+                        <td>{item.footage}</td>
+                        <td>{item.press}</td>
+                        <td>
+                            {isEditing ?
+                                <button id={item.id} onClick={btn}>Save</button>
+                                :
+                                <button id={item.id} onClick={btn}>Edit</button>
+                            }
+                        </td>
                     </tr>
-                    <tr>
-                        <td>85232</td>
-                        <td>7</td>
-                        <td>Amazon</td>
-                        <td>7500</td>
-                        <td>2204</td>
-                        <td><Options></Options></td>
-                    </tr>
+                ))}
                 </tbody>
             </table>
 

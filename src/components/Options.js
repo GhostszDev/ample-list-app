@@ -1,9 +1,9 @@
 import React from 'react';
-import { FaPen } from "react-icons/fa";
+import {editBtn} from "./Functions"
 
 let isEditable = false;
 
-const Options = () => {
+const Options = (props) => {
     return (
         <span className='Options'>
         </span>

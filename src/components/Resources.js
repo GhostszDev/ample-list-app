@@ -1,10 +1,7 @@
-const fetch = require('node-fetch');
+const WebServices = '';
 
-export const WebServices = '';
+function WebServicePost(http = '', header = [], data = []) {
 
-export function WebServicePost(http = '', header = [], data = []) {
-
-    let returnData = [];
-
-    return returnData;
 }
+
+module.exports = {WebServicePost}
