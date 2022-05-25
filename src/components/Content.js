@@ -1,9 +1,13 @@
 import React, {useState, useEffect} from 'react';
+import * as ReactDOM from 'react-dom';
 import {editBtn} from "./Functions"
 
 const Content = () => {
     let isEditing = false;
     const [data, setData] = useState([]);
+    const [edit, setEdit] = useState(false);
+
+    const [editData, setEditData] = useState([]);
 
     useEffect(() => {
         const url = "https://api.adviceslip.com/advice";
@@ -20,9 +24,13 @@ const Content = () => {
     }, []);
 
     function btn(id){
-        isEditing = !isEditing;
+        console.log(id)
+        isEditing = edit;
         editBtn(id)
+        console.log(isEditing)
     }
+
+
 
     return (
         <div className='Content'>
@@ -59,22 +67,28 @@ const Content = () => {
                     </tr>
                 </thead>
                 <tbody>
-                {data.map(item => (
-                    <tr key={item.id}>
-                        <td>{item.job_number}</td>
-                        <td>{item.width}</td>
-                        <td>{item.description}</td>
-                        <td>{item.footage}</td>
-                        <td>{item.press}</td>
-                        <td>
-                            {isEditing ?
-                                <button id={item.id} onClick={btn}>Save</button>
-                                :
-                                <button id={item.id} onClick={btn}>Edit</button>
-                            }
-                        </td>
-                    </tr>
-                ))}
+                {
+                     data.map(item => (
+                         isEditing ?
+                             <tr key={item.id}>
+                                 <td><input value={item.job_number}/></td>
+                                 <td>{item.width}</td>
+                                 <td>{item.description}</td>
+                                 <td>{item.footage}</td>
+                                 <td>{item.press}</td>
+                                 <td><button id={item.id} onClick={btn}>Save</button></td>
+                             </tr>
+                             :
+                             <tr key={item.id}>
+                                <td>{item.job_number}</td>
+                                <td>{item.width}</td>
+                                <td>{item.description}</td>
+                                <td>{item.footage}</td>
+                                <td>{item.press}</td>
+                                <td><button id={item.id} onClick={btn}>Save</button></td>
+                            </tr>
+                    ))
+                }
                 </tbody>
             </table>
 

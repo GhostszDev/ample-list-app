@@ -1,4 +1,4 @@
-import {WebServicePost} from './Resources'
+import {WebServicePost, WebServices} from './Resources'
 
 let tableData = {};
 
